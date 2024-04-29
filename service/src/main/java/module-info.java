@@ -1,2 +1,3 @@
-module $MODULE_NAME$ {
+module org.example.service {
+    exports org.example.service;
 }
