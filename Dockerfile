@@ -1,8 +1,8 @@
+
+
 FROM eclipse-temurin:22-jre-alpine
-
-
-COPY target/consumer-1.0-SNAPSHOT.jar /consumer.jar
-COPY target/provider-1.0-SNAPSHOT.jar /provider.jar
-COPY target/service-1.0-SNAPSHOT.jar /service.jar
-
-ENTRYPOINT ["java", "--module.path", "/consumer.jar:/provider.jar:/service.jar", "com.example.consumer.Main"]
+WORKDIR /app
+COPY ./service/target/service-1.0-SNAPSHOT.jar/ /app
+COPY ./provider/target/provider-1.0-SNAPSHOT.jar/ /app
+COPY ./consumer/target/consumer-1.0-SNAPSHOT.jar/ /app
+CMD ["java", "--module-path","/app","--module","org.example.consumer/org.example.consumer.Main"]
